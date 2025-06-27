@@ -65,7 +65,7 @@ jobs:
 
           #move files to x86_64
           mkdir x86_64
-          mv $REPO.{db,files} x86_64
+          mv $REPO.{db,files} *.tar.zst x86_64
 
       - name: Push to another repo
         uses: dmnemec/copy_file_to_another_repo_action@main
