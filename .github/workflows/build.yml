@@ -20,7 +20,7 @@ jobs:
       - name: Build in Arch Linux container
         run: |
           docker run --rm -v "$PWD:/github/workspace" -w /github/workspace archlinux:latest bash -c "
-            pacman -Syu --noconfirm base-devel &&
+            pacman -Syu --noconfirm base-devel dbus-glib gtk3 libxt nss mime-types python &&
             useradd -m builder &&
             chown -R builder . &&
             su builder -c '
