@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: main
+    paths-ignore: 
+      - '**.md'
   workflow_dispatch:
 
 jobs:
@@ -33,11 +35,6 @@ jobs:
           git
           ls -la
 
-      - name: Set up Git config
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Build firefox
         run: |
           # create a user
@@ -46,33 +43,29 @@ jobs:
           # permissions
           chmod -R 777 /work && cd /work
 
-          #remove existing repo .git files
-          rm -rf .git
-
           #use maximum compression
           REPLACE='COMPRESSZST=(zstd -c -z -q -19 -T0 -)'
           FIND='COMPRESSZST=(zstd -c -T0 -)'
 
           sed -i "s/$FIND/$REPLACE/g" /etc/makepkg.conf
 
-
           #build firefox
           su bot_the_builder -c 'cd /work && makepkg --noconfirm OPTIONS=-debug'
 
           #generate database
-          repo-add $REPO.db.tar.gz *.tar.zst
+          repo-add "$REPO".db.tar.gz *.tar.zst
 
           #set up
           #remove symlinked files
-          rm $REPO.db $REPO.files
+          rm "$REPO".db "$REPO".files
 
           #use actual archives as db
-          mv $REPO.db.tar.gz $REPO.db
-          mv $REPO.files.tar.gz $REPO.files
+          mv "$REPO".db.tar.gz "$REPO".db
+          mv "$REPO".files.tar.gz "$REPO".files
 
           #move files to x86_64
           mkdir x86_64
-          mv $REPO.{db,files} *.tar.zst x86_64
+          mv "$REPO".{db,files} *.tar.zst x86_64
 
       - name: Push to another repo
         uses: dmnemec/copy_file_to_another_repo_action@main
@@ -82,6 +75,6 @@ jobs:
               source_file: 'x86_64'
               destination_repo: 'librefox05/librefox_repo'
               destination_folder: '.'
-              user_email: '[email protected]'
-              user_name: 'github-actions'
+              user_email: 'github-actions[bot]@users.noreply.github.com'
+              user_name: 'github-actions[bot]'
               commit_message: 'Automated file push'

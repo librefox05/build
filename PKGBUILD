@@ -8,7 +8,7 @@ conflicts=('firefox')
 pkgdesc="Fast, Private & Safe Web Browser from Mozilla — With better defaults (${_lang})"
 url="https://download.mozilla.org/?product=${_name}-latest&os=linux64"
 pkgver=140.0.1
-pkgrel=1
+pkgrel=2
 autoconfig="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/autoconfig.js"
 firefox_cfg="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/firefox.cfg"
 launcher="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/firefox.desktop"
