@@ -39,6 +39,9 @@ jobs:
 
       - name: Build firefox
         run: |
+          # create a user
+          useradd -m bot_the_builder
+
           # permissions
           chmod -R 777 /work && cd /work
 
@@ -46,8 +49,9 @@ jobs:
           rm -rf .git
 
           #build firefox
-          COMPRESSZST=(zstd -c -T0 --ultra -22 -) \
-          makepkg --noconfirm OPTIONS=-debug
+          pwd
+          su bot_the_builder -c 'COMPRESSZST=(zstd -c -T0 --ultra -22 -) makepkg --noconfirm OPTIONS=-debug'
+          pwd
 
           #generate database
           repo-add $REPO.db.tar.gz *.tar.zst
