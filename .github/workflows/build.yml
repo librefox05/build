@@ -34,6 +34,10 @@ jobs:
               cd /github/workspace &&
               makepkg --noconfirm
               repo-add betterfirefox_repo.db.tar.gz *.tar.zst
+              name=betterfox_repo
+              rm betterfirefox_repo.db betterfirefox_repo.files
+              mv betterfirefox_repo.db.tar.gz betterfirefox_repo.db
+              mv betterfirefox_repo.files.tar.gz betterfirefox_repo.files
               git clone https://$GH_PAT@github.com/$USER/$REPO.git repo
               [[ ! -f x86_64 ]] && mkdir "x86_64"
               rm *-debug*.tar.zst
