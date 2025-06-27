@@ -9,6 +9,10 @@ pkgdesc="Fast, Private & Safe Web Browser from Mozilla — With better defaults 
 url="https://download.mozilla.org/?product=${_name}-latest&os=linux64"
 pkgver=140.0.1
 pkgrel=1
+autoconfig="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/autoconfig.js"
+firefox_cfg="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/firefox.cfg"
+launcher="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/firefox.desktop"
+policies="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/policies.json"
 arch=('x86_64' 'aarch64')
 license=('MPL' 'GPL' 'LGPL')
 conflicts=('firefox')
@@ -31,11 +35,11 @@ optdepends=(
   'startup-notification: support for FreeDesktop Startup Notification'
 )
 source=(
-  'firefox.desktop'
-  'policies.json'
+  "${launcher}"
+  "${policies}"
   "${_name}.tar.xz::${url}"
-  "autoconfig.js"
-  "firefox.cfg"
+  "${autoconfig}"
+  "${firefox_cfg}"
 )
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
