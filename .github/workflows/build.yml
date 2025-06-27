@@ -17,11 +17,18 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
-
-      - name: Install base-devel and git
-        run: sudo pacman -Syu --noconfirm base-devel git
+      - name: Build in Arch Linux container
+        run: |
+          docker run --rm -v "$PWD:/github/workspace" -w /github/workspace archlinux:latest bash -c "
+            pacman -Syu --noconfirm base-devel &&
+            useradd -m builder &&
+            chown -R builder . &&
+            su builder -c '
+              cd /github/workspace &&
+              makepkg --noconfirm
+              repo-add betterfirefox-repo.db.tar.gz *.tar.zst
+            '
+          "
 
       - name: Build Package
         run: |
@@ -29,8 +36,7 @@ jobs:
       
       - name: Generate repo
         run: |
-          mkdir "x86_64"
-          repo-add betterfirefox-repo.db.tar.gz *.tar.zst
+          [[ ! -f x86_64 ]] && mkdir "x86_64"
           mv *.tar.zst betterfirefox-repo* x86_64
 
       - name: Add and push to github
