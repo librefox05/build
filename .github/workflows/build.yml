@@ -33,11 +33,11 @@ jobs:
             su builder -c '
               cd /github/workspace &&
               makepkg --noconfirm
-              repo-add betterfirefox-repo.db.tar.gz *.tar.zst
+              repo-add betterfirefox_repo.db.tar.gz *.tar.zst
               git clone https://$GH_PAT@github.com/$USER/$REPO.git repo
               [[ ! -f x86_64 ]] && mkdir "x86_64"
               rm *-debug*.tar.zst
-              mv *.tar.zst betterfirefox-repo* x86_64
+              mv *.tar.zst betterfirefox_repo* x86_64
             '
           "
       - name: Push to another repo
@@ -47,7 +47,7 @@ jobs:
         with:
               source_file: 'x86_64'
               destination_repo: 'betterfirefox/betterfirefox_repo'
-              destination_folder: ''
+              destination_folder: '.'
               user_email: '[email protected]'
               user_name: 'github-actions'
               commit_message: 'Automated file push'
