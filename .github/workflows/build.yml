@@ -8,6 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GH_PAT: ${{ secrets.GH_TOKEN }}
+      REPO: betterfirefox_repo
+      USER: betterfirefox
+      UNAME: 'github-actions[bot]'
+      UEMAIL: 'github-actions[BOT]@users.noreply.github.com'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -16,27 +22,34 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Build in Arch Linux container
         run: |
+          rm -rf .git
           docker run --rm -v "$PWD:/github/workspace" -w /github/workspace archlinux:latest bash -c "
-            pacman -Syu --noconfirm base-devel dbus-glib gtk3 libxt nss mime-types python &&
+            pacman -Syu --noconfirm base-devel dbus-glib gtk3 libxt nss mime-types python git &&
             useradd -m builder &&
             chown -R builder . &&
+            su builder -c 'git config --global user.name $UNAME && git config --global user.email $UEMAIL'
             su builder -c '
               cd /github/workspace &&
               makepkg --noconfirm
               repo-add betterfirefox-repo.db.tar.gz *.tar.zst
+              git clone https://$GH_PAT@github.com/$USER/$REPO.git repo
+              [[ ! -f x86_64 ]] && mkdir "x86_64"
+              rm *-debug*.tar.zst
+              mv *.tar.zst betterfirefox-repo* x86_64
             '
           "
-      
-      - name: Generate repo
-        run: |
-          [[ ! -f x86_64 ]] && mkdir "x86_64"
-          mv *.tar.zst betterfirefox-repo* x86_64
+      - name: Push to another repo
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+              API_TOKEN_GITHUB: ${{ secrets.GH_TOKEN }}
+        with:
+              source_file: 'x86_64'
+              destination_repo: 'betterfirefox/betterfirefox_repo'
+              destination_folder: ''
+              user_email: '[email protected]'
+              user_name: 'github-actions'
+              commit_message: 'Automated file push'
 
-      - name: Add and push to github
-        run: |
-          git add x86_64
-          git commit -m "Update package"
-          git push origin main
+
