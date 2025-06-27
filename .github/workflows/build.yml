@@ -15,7 +15,7 @@ jobs:
         USER: librefox05
         REPO: librefox_repo
       volumes:
-        - /github/workspace:/work
+        - ${{ github.workspace }}:/work
 
     steps:
       - name: Checkout
@@ -31,6 +31,7 @@ jobs:
           mime-types \
           python \
           git
+          ls -la
 
       - name: Set up Git config
         run: |
@@ -49,9 +50,7 @@ jobs:
           rm -rf .git
 
           #build firefox
-          pwd
-          su bot_the_builder -c 'COMPRESSZST=(zstd -c -T0 --ultra -22 -) makepkg --noconfirm OPTIONS=-debug'
-          pwd
+          su bot_the_builder -c 'cd /work && COMPRESSZST=(zstd -c -T0 --ultra -22 -) makepkg --noconfirm OPTIONS=-debug'
 
           #generate database
           repo-add $REPO.db.tar.gz *.tar.zst
