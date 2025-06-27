@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Validate package
+        uses: heyhusen/archlinux-package-action@v2
+
+      - name: Install base-devel and git
+        run: sudo pacman -Syu --noconfirm base-devel git
+
+      - name: Build Package
+        run: |
+          makepkg
+      
+      - name: Generate repo
+        run: |
+          mkdir "x86_64"
+          repo-add betterfirefox-repo.db.tar.gz *.tar.zst
+          mv *.tar.zst betterfirefox-repo* x86_64
+
+      - name: Add and push to github
+        run: |
+          git add x86_64
+          git commit -m "Update package"
+          git push origin main
