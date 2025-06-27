@@ -49,8 +49,15 @@ jobs:
           #remove existing repo .git files
           rm -rf .git
 
+          #use maximum compression
+          REPLACE='COMPRESSZST=(zstd -c -z -q -19 -T0 -)'
+          FIND='COMPRESSZST=(zstd -c -T0 -)'
+
+          sed -i "s/$FIND/$REPLACE/g" /etc/makepkg.conf
+
+
           #build firefox
-          su bot_the_builder -c 'cd /work && COMPRESSZST=(zstd -c -T0 --ultra -22 -) makepkg --noconfirm OPTIONS=-debug'
+          su bot_the_builder -c 'cd /work && makepkg --noconfirm OPTIONS=-debug'
 
           #generate database
           repo-add $REPO.db.tar.gz *.tar.zst
