@@ -29,10 +29,6 @@ jobs:
               repo-add betterfirefox-repo.db.tar.gz *.tar.zst
             '
           "
-
-      - name: Build Package
-        run: |
-          makepkg
       
       - name: Generate repo
         run: |
