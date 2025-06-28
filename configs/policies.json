@@ -1,6 +1,57 @@
 {
-"policies": 
-   {
-     "DisableAppUpdate": true
+  "policies": {
+    "DisableAppUpdate": true,
+    "Extensions": {
+      "Install": [
+        "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
+      ]
+    },
+    "SearchEngines": {
+      "PreventInstalls": false,
+      "Remove": [
+        "Google",
+        "Bing",
+        "Amazon.com",
+        "eBay",
+        "Twitter"
+      ],
+      "Default": "DuckDuckGo",
+      "Add": [
+        {
+          "Name": "SearXNG - searx.be",
+          "Description": "A privacy-respecting, hackable metasearch engine",
+          "Alias": "",
+          "Method": "POST",
+          "URLTemplate": "https://searx.be/?q={searchTerms}",
+          "PostData": "q={searchTerms}&category_general=on",
+          "IconURL": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaWQ9InN2ZzgiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDkyIDkyIiBoZWlnaHQ9IjkybW0iIHdpZHRoPSI5Mm1tIj4KICA8ZGVmcyBpZD0iZGVmczIiLz4KICA8bWV0YWRhdGEgaWQ9Im1ldGFkYXRhNSI+CiAgICA8cmRmOlJERj4KICAgICAgPGNjOldvcmsgcmRmOmFib3V0PSIiPgogICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PgogICAgICAgIDxkYzp0eXBlIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiLz4KICAgICAgICA8ZGM6dGl0bGUvPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDAuOTIxMzAzLC0xNy40MTY1MjYpIiBpZD0ibGF5ZXIxIj4KICAgIDxjaXJjbGUgcj0iMCIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MTI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIgY3k9IjkyIiBjeD0iNzUiIGlkPSJwYXRoMzcxMyIvPgogICAgPGNpcmNsZSByPSIzMCIgY3k9IjUzLjkwMjU1NyIgY3g9Ijc1LjkyMTMwMyIgaWQ9InBhdGg4MzQiIHN0eWxlPSJmaWxsOm5vbmU7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiMzMDUwZmY7c3Ryb2tlLXdpZHRoOjEwO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiLz4KICAgIDxwYXRoIGQ9Im0gNjcuNTE0ODQ5LDM3LjkxNTI0IGEgMTgsMTggMCAwIDEgMjEuMDUxNDc1LDMuMzEyNDA3IDE4LDE4IDAgMCAxIDMuMTM3MzEyLDIxLjA3ODI4MiIgaWQ9InBhdGg4NTIiIHN0eWxlPSJmaWxsOm5vbmU7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiMzMDUwZmY7c3Ryb2tlLXdpZHRoOjU7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIvPgogICAgPHJlY3QgdHJhbnNmb3JtPSJyb3RhdGUoLTQ2LjIzNDcwOSkiIHJ5PSIxLjg2NjkxMDVlLTEzIiB5PSIxMjIuMDg5OTUiIHg9IjMuNzA2MzUyOSIgaGVpZ2h0PSIzOS45NjMzMDMiIHdpZHRoPSIxOC44NDYzMzEiIGlkPSJyZWN0OTEyIiBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6IzMwNTBmZjtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6ODtzdHJva2UtbWl0ZXJsaW1pdDo0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIi8+CiAgPC9nPgo8L3N2Zz4="
+        },
+        {
+          "Name": "StartPage",
+          "Description": "The world's most private search engine",
+          "Alias": "",
+          "Method": "GET",
+          "URLTemplate": "https://www.startpage.com/sp/search?query={searchTerms}&cat=web&pl=opensearch",
+          "IconURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADb0lEQVRYhb2VXWgUVxiGv2gtWHrXBqExO2d2z5leWC80ilRKDTHunAPWhEi0gYY2mZkorYm7Z260oCiiFaQ3/RNqG/CvqAheKLSUUgpWqBdCKdbc+XMji4mhmk2MXTdvL9r4U+dsZtasH3x3877v852/IapUuzDHz6HF0/jU1/g10CgEIUq+xoMgxLAf4qIX4ksvj3c6O/FiRa8k1dyMF4IQm/0QV4MQiNkFP4+P+/rw0jOFewN4I9D4PUHwk61xrSePVVWF9+agAo2xqsMfdcnLwU8U7ufQHGhMzkL4dJe9EN3xwrdiga9xq4LZXV/jkK+xsTePZT05LPXzaPvvcBZMOj/EvQ/yWDwzgMZRo4nG0a4+vGrSduYxP9DYF4QoG/QXKoa/349M8O+1ippgb6wlJCIvh25fY8rgs6bS9LuiRJ7GT0SoiwtARORpfG5YhWNGURDifJSoR2NlknAiop5+1Psh7kdczYJR5IcYiRAMJw1/OJDGL1EDdYWGc7R9LyY/+QzlLwYxdfgkcPoscO5H/FYtwMQ9HBmfAMaKwOhfwPBt4GYBuH4ddqQAQBFP1+VqAQCcifADgAaT4HLExyXAfPXM1TSvvTNX6NiQH29bPzC2tr2/uLZ9y/i6joERAHMjJVeGrn79/Q/ncejb09i95yA2fbQHbeu3YsmKjTuTxltc9dqOwv+bOfJno6iRq2ykSKiJVCbbFDc8lWpNM0eORHlZXH5YSVtnO+oPA/mIlVEtMSZfYgt1I8rDFvJWfX3zy5UNMqqFCVU2rESZCXU8lZZvEdHj+1hncXcpE+qg7ci/I8MdBYu78f6KjLv7TSaPYOQ4E3KICfWnLdSdGb935KlY4dMTMaEGZzJN0kzI74hoTiIIW7g7bEeVZg/C/SoJABERNablcsbdC7MFYXEV+6/6JIjIvs2EGmRCFcz7rEYZd0+kuHyPOfKmESLjhlVBTJdlZe1GvibLHPkuE7LLymTVa7Z8nR7b44Xp1sXMUaOG8zBl8WzvM0HEAuXyTebIomElSpaQHTWHaOTStR113wAxmUq7rTWHSHF3AxPqQTSEHGMiu6LmECwjNzEhpwyP1O0UdxfVHoLLbRUeqks1ByAisoQ8YNiK0nMBICKyufzmqbdByHPPDYCI5jIu99lCDTNHFhl3TzQ0rH7lHy2g5RVQKFbLAAAAAElFTkSuQmCC",
+          "SuggestURLTemplate": "https://www.startpage.com/osuggestions?q={searchTerms}"
+        },
+        {
+          "Name": "Mojeek",
+          "Description": "The world's alternative search engine",
+          "Alias": "",
+          "Method": "GET",
+          "URLTemplate": "https://www.mojeek.com/search?q={searchTerms}",
+          "IconURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA8pJREFUeNrsVk1vG0UY3tnvtb3+SJpgO01cmkQKUhURqBCC8iE+EoSKED1QBBUKB0r7AzjwB+BSUX4AXDkhFATHCJAKKpSegDZqRVFpGtLETmI72fV+zvDsDnV2VwUu4ZY52KN55n2feZ953rEJY0z4PwfZJ9gn2EOCle7StY2Lf3ave6EzYNRnai80ytNYv7F5+ee1xXXrD8bCoXzjsdFXa+YkD7m+8cNS88K6dTMIPVMbmK7OTt/37D0I2s7qZ1feRyI3tEUiEYGELNCk3Nzk2Q17+cfbCyH1JSJjd8C8vFKef+j8oDHy+dUPlprfURZGIYRQGlKBPnXo1MtT72YJtr2ND78/aftdviSLKj6ZQP3QxUSRdCEqkyFRxEG9onZAEpWWdUuTczQWQCRiHMIcf/vNmXMPVmf7BBFgqoOPjp7oBd1qYXykOIXUEbMgqpKB7H7oYIJcPnVjem3H22o7a1iBmJpsaJLBIZQO4ku3F5IVyPzrkYOvDOcPQ0Gc4qOLr7fsZYkomEOB2Yl3jtaPEyIu3vj40sqCIuooBRBknJs4c3TkJcbo4u+f/LTyBSAZldm3nGBHlwspgopeq9Rq8ZThjJEkRPBC+4nGG8+Pn+Z7ZifO/LL+NQpCcYCebJx6bvxtDs1NnP117RufOigDGqIgXSjsSpQcvWDb9tvQFELpsvn42Mk+pMo6bp6iKoEacvFY47VdSNJ1OY9ScD6oqop66g6Sw/a3ncCCICENhnJjg7mDfcjxLS/sifAYoPwYrLwLBRYciGyQtKBWcD3/SGB5W14kAsHWslHFJA31BBJlKWrDQgLa8TbdwI7MymgpDWUJsBWuj+1Li9pQEoKboS/hkJ6G3BaHwF0xakkoS9B1W9jETV1KE3TdZkjvDXXcJo0uIPbLfxE0/+5AQkr6cCqLsx4lj/2egeIo3nFSWa/+K4HTRGq+1dQOZAj4lYiinFXPbcUQQ6MV01FZAggNm0MERdRMdSBzTBLZF42iovnT1ugQ/lowyrViAks1WtIq0cPCqCLnc2q5v44A3H/UHwz9UcgnIAx09V1dxa+una8YdUMxTzzwXrYCj/YsPzoLFRiyGLLZh+BCy2uT6JGghlJAfDKwolc5h0yU5c7VyytfXln71vY7WQLb67R7q8gFDBKhPxOVbW45dzwOSbqS6FWMh+sv4kF0AwuPBErE/eE1XN35LSsRxH36/nnoEfdqI9kvSPrM4bdI3MbDhUMZYUdLR+Znzl24+SkeWkMp1s3JqaFjY6Uje/+TyX9/9v9V7BPs7fhLgAEAm6sRCKh1afsAAAAASUVORK5CYII="
+        },
+        {
+          "Name": "Brave Search",
+          "Description": "The smarter way to search.",
+          "Alias": "",
+          "Method": "GET",
+          "URLTemplate": "https://search.brave.com/search?q={searchTerms}",
+          "IconURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAnFBMVEVHcEwXBgA3DQl/HBF5HBLeMCmwKBLXMyC6KQ3dMBLbMxjuOijgLgviKwHwOiryOyXwMAv5PST0LwnuLQD7QiXwLQD1LQD7LwjxNQr4Myf5OR/yPxf4OS3/Pyb/QivxTCj+SjD/VT7xXT35alL6d2L8iHb4loX5o5f7sKX0w73/zMb00s//1M754uH76+z18PT39ff/9fT8+vz///96nB6rAAAAFXRSTlMAAw0ZJDRIWGV2kKSuwcLT1e3v+/wkomRQAAABoklEQVR42nWT2WKCMBBFi6DgUpUlasUgCGGPIPz/v3WSkECV3hce7snMnUz4mkhT+pqVfnQGHfVZ/3BVOizeTG1pGvvbRPuludQm/vZ2+/nQVhv9IMDX6xmEk8Rj3ytyXXcniTX4OHq+6rzsurYpsuJJ7wi0HoAVAEHdcwHAVV0AWA3Awg5w1r9oTQVQFRVtMoQcOYsZBHHflyTEUd61+R1d4qJpHgiZKqNo8Moj0rXEzyhvgtBOU0ApEuSsQipSFAxQLSLKgaTu2uouUvoIWUMGA6bgRIlfEPKSg8/mdA05xYHfQ9+T8Nm11I+Fj45yCm0DAI4hZYqj8JRQNgJoo+7aZEDUsyaRxxo0/CLNcdMeACmPmREeMQXf1cdt7iWQ43Mqge/JvjcAhHVPSUiIHxcwo4wg14UDIOIwgzGfqf+4ILkqtS4MCoZlUfDVqsYQbJCSAQXUHyPIN4OFsq7NTuCOr0Xetj0QhJwE4Bh/n7XlDcRZAK6lvT38lT0FnJX0x9/O2I3Azpj7+xaWLQDH4hN+CoowQB2fL6KO/1NE19+O/wIwPEoAZi8ATQAAAABJRU5ErkJggg=="
+        }
+      ]
     }
+  }
 }

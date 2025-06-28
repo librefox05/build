@@ -7,8 +7,8 @@ provides=('firefox')
 conflicts=('firefox')
 pkgdesc="Fast, Private & Safe Web Browser from Mozilla — With better defaults (${_lang})"
 url="https://download.mozilla.org/?product=${_name}-latest&os=linux64"
-pkgver=140.0.1
-pkgrel=2
+pkgver=140.0.2
+pkgrel=1
 autoconfig="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/autoconfig.js"
 firefox_cfg="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/firefox.cfg"
 launcher="https://raw.githubusercontent.com/betterfirefox/firefox/refs/heads/main/configs/firefox.desktop"
@@ -45,7 +45,7 @@ validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG re
 
 sha256sums=('SKIP'
   'SKIP'
-  '81596b5061753e1524a3aa41512aee667ec34eac24abd52cd919c759a90a2a60'
+  '0de987e3065409d7feeba28e8b9c59c8270b917a293c140a5423579c7e70f8ce'
   'SKIP'
   'SKIP'
 )
