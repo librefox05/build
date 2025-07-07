@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
-Name=Firefox
+Name=Librefox
 Comment=Browse the World Wide Web
 GenericName=Web Browser
 Keywords=Internet;WWW;Browser;Web;Explorer;
-Exec=firefox-stable %u
+Exec=librefox %u
 Icon=firefox
 Terminal=false
 X-MultipleArgs=false
@@ -17,12 +17,12 @@ Actions=new-window;new-private-window;profile-manager-window;
 
 [Desktop Action new-window]
 Name=Open a New Window
-Exec=firefox-stable --new-window %u
+Exec=librefox --new-window %u
 
 [Desktop Action new-private-window]
 Name=Open a New Private Window
-Exec=firefox-stable --private-window %u
+Exec=librefox --private-window %u
 
 [Desktop Action profile-manager-window]
 Name=Open the Profile Manager
-Exec=firefox-stable --ProfileManager
+Exec=librefox --ProfileManager
