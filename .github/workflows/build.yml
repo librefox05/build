@@ -73,7 +73,7 @@ jobs:
               API_TOKEN_GITHUB: ${{ secrets.GH_TOKEN }}
         with:
               source_file: 'x86_64'
-              destination_repo: 'librefox05/librefox_repo'
+              destination_repo: 'librefox05/repo'
               destination_folder: '.'
               user_email: 'github-actions[bot]@users.noreply.github.com'
               user_name: 'github-actions[bot]'
