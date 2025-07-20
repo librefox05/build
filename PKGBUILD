@@ -5,14 +5,13 @@ _pkgname="${_name}"
 pkgname="librefox"
 provides=('librefox')
 conflicts=('librefox')
-pkgdesc="Fast, Private & Safe Web Browser from Mozilla — With better defaults (${_lang})"
+pkgdesc="Librefox browser, made with privacy and usability in mind (${_lang})"
 pkgver=140.0.4
-pkgrel=6
-tag=${pkgver}-${pkgrel}
+pkgrel=1
+tag=${pkgver}-6
 url="https://github.com/librefox05/releases/releases/download/${tag}/librefox-x86_64-${pkgver}.tar.xz"
 arch=('x86_64' 'aarch64')
 license=('MPL' 'GPL' 'LGPL')
-conflicts=('firefox')
 
 depends=(
   'dbus-glib'
