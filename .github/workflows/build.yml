@@ -3,8 +3,8 @@ name: CI
 on:
   push:
     branches: main
-    paths-ignore: 
-      - '**.md'
+    paths-ignore:
+      - "**.md"
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
       env:
         GH_PAT: ${{ secrets.GH_TOKEN }}
         USER: librefox05
-        REPO: librefox_repo
+        REPO: librefox_arch
       volumes:
         - ${{ github.workspace }}:/work
 
@@ -70,11 +70,11 @@ jobs:
       - name: Push to another repo
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-              API_TOKEN_GITHUB: ${{ secrets.GH_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.GH_TOKEN }}
         with:
-              source_file: 'x86_64'
-              destination_repo: 'librefox05/repo'
-              destination_folder: '.'
-              user_email: 'github-actions[bot]@users.noreply.github.com'
-              user_name: 'github-actions[bot]'
-              commit_message: 'Automated file push'
+          source_file: "x86_64"
+          destination_repo: "librefox05/librefox_arch"
+          destination_folder: "."
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          user_name: "github-actions[bot]"
+          commit_message: "Automated file push"
